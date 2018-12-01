@@ -1,0 +1,9 @@
+[27-Nov-2018 05:59:16 UTC] PHP Notice:  Undefined variable: conn in /home/dcoredco/maddsrc.org/user/dashboard/index.php on line 9
+[27-Nov-2018 05:59:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/dcoredco/maddsrc.org/user/dashboard/index.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/dcoredco/maddsrc.org/user/dashboard/index.php on line 9
+[27-Nov-2018 06:00:59 UTC] PHP Notice:  Undefined variable: userRow in /home/dcoredco/maddsrc.org/user/dashboard/index.php on line 18
+[27-Nov-2018 06:00:59 UTC] PHP Notice:  Undefined variable: userRow in /home/dcoredco/maddsrc.org/user/dashboard/index.php on line 29
+[27-Nov-2018 06:01:02 UTC] PHP Notice:  Undefined variable: userRow in /home/dcoredco/maddsrc.org/user/dashboard/index.php on line 18
+[27-Nov-2018 06:01:02 UTC] PHP Notice:  Undefined variable: userRow in /home/dcoredco/maddsrc.org/user/dashboard/index.php on line 29

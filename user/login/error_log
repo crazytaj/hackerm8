@@ -1,0 +1,4 @@
+[27-Nov-2018 01:52:36 UTC] PHP Warning:  include(dbconnect.php): failed to open stream: No such file or directory in /home/dcoredco/maddsrc.org/users/login/index.php on line 5
+[27-Nov-2018 01:52:36 UTC] PHP Warning:  include(dbconnect.php): failed to open stream: No such file or directory in /home/dcoredco/maddsrc.org/users/login/index.php on line 5
+[27-Nov-2018 01:52:36 UTC] PHP Warning:  include(): Failed opening 'dbconnect.php' for inclusion (include_path='.:/opt/alt/php71/usr/share/pear') in /home/dcoredco/maddsrc.org/users/login/index.php on line 5
+[27-Nov-2018 02:18:19 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/dcoredco/maddsrc.org/users/login/index.php on line 17
