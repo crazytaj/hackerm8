@@ -16,11 +16,9 @@ if (!isset($_SESSION)) {
     <body>
         <?php
         include 'header.php';
-        if (isset($_SESSION['user'])) {
-            echo 'success';
-        } else {
-            echo 'failure';
-        }
         ?>
+        <div class="container container-fluid">
+        
+        </div>
     </body>
 </html>

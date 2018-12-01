@@ -2,6 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+require_once '../dbconnect.php';
 if (isset($_GET['question'])) {
     $type = $_GET['question'];
     switch ($type) {
