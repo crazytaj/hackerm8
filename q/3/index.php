@@ -2,27 +2,15 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-if (isset($_GET['question'])) {
-    $type = $_GET['question'];
-    switch ($type) {
-        case 'ask':
-            $title = 'Ask a Question';
-        break;
-
-        case 'browse':
-            $title = 'Browse the forum';
-        break;
-
-        case 'answer':
-            $title = 'Answer questions';
-        break;
-
-        default:
-            header('Location: ' . '/');
-        break;
-    }
-} else {
-    header('Location: ' . '/');
+require_once '../../dbconnect.php';
+$id = 3;
+$sql = $conn->query("SELECT * FROM questions WHERE id = '".$id."'") or die($conn->error);
+foreach($sql as $ind) {
+    $title = $ind['title'];
+    $body = $ind['content'];
+    $date = $ind['date'];
+    $price = $ind['price'];
+    $author = $ind['author'];
 }
 ?>
 <!DOCTYPE html>
@@ -36,23 +24,19 @@ if (isset($_GET['question'])) {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </head>
     <body>
+        <?php 
+        include '../../header.php';
+        ?>
+        <br>
+        <h3 class="float-left"><?php echo $date?></h3>
+        <h2><?php echo $title?></h2>
+        <small>asked by <?php echo $author?></small>
+        <br>
+        <p><?php echo $body?></p>
+        <hr>
+        <h2>Answers:</h2>
         <?php
-        include '../header.php';
-        echo '<br>';
-            $type = $_GET['question'];
-            switch ($type) {
-                case 'ask':
-                    include 'ask.php';
-                break;
-        
-                case 'browse':
-                    include 'browse.php';
-                break;
-        
-                case 'answer':
-                    include 'answer.php';
-                break;
-            }
+
         ?>
     </body>
 </html>

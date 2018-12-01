@@ -29,13 +29,13 @@
       </li>
       <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="" id="project" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Projects
+          Community
         </a>
         <div class="dropdown-menu" aria-labelledby="project">
-          <a class="dropdown-item" href="/project?class=website">Websites</a>
-          <a class="dropdown-item" href="/project?class=software">Software</a>
+          <a class="dropdown-item" href="/forum?question=ask">Ask a Question</a>
+          <a class="dropdown-item" href="/forum?question=browse">Browse the forum</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/project?class=community">Community</a>
+          <a class="dropdown-item" href="/forum?question=answer">Answer a Question</a>
         </div>
       </li>
     </ul>
