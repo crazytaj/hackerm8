@@ -3,7 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 if (!isset($_SESSION['user'])) {
-    header('Location: ' . '/user/login');
+    echo '<meta http-equiv="refresh" content="0 url=/user/login ">'; 
 }
 $question = $_GET['query'];
 if (isset($_POST['search'])) {
@@ -15,7 +15,7 @@ if (isset($_POST['search'])) {
     $title = $_POST['title'];
     $question = $_POST['content'];
     $date = time();
-    $catigory = json_encode($_POST['catigory']);
+    $catigory = 'blank';
     $price = $_POST['price'];
     $sql = $conn->query("INSERT INTO questions (title, author, content, price, catigories, date) VALUES ('".$title."', '".$author."', '".$question."', '".$price."', '".$catigory."', '".$date."')") or die($conn->error);
     $sql = $conn->query("SELECT id FROM questions WHERE date = '".$date."'");
@@ -29,9 +29,8 @@ if (isset($_POST['search'])) {
 }
 ?>
 <form method="POST">
-<input type="text" name="title" placeholder="Question" value="<?php echo $question?>" required>
-<textarea name="content" placeholder="Description" required></textarea>
-<input type="text" name="price" placeholder="Price (in $)" required>
-<input type="text" name="catigory" placeholder="catigories" required>
+<input type="text" name="title" placeholder="Question" value="<?php echo $question?>" required><br>
+<textarea name="content" placeholder="Description" required></textarea><br>
+<input type="text" name="price" placeholder="Price (in $)" required><br>
 <input type="submit" name="search">
 </form>

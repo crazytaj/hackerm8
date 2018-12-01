@@ -1,5 +1,5 @@
 <?php
-function fetch_question($url) {
+function fetch_answer($url) {
     $dom = new DOMDocument('1.0');
     @$dom->loadHTMLFile($url);
     $answers = array();
@@ -61,3 +61,55 @@ function fetch_question($url) {
     }
     return $answers;
 }
+
+function fetch_question($search) {
+    $urls = array();
+    $bigstring=file_get_contents($search);
+    $bigstring = gzdecode($bigstring);
+    $numberoflinks = substr_count($bigstring, '"link":');
+    //echo $bigstring;
+    $i = 0;
+    for ($i = 0; $i < $numberoflinks; $i++) {
+        $fsl = strpos($bigstring, '"link":');
+        $fslr = substr($bigstring, $fsl, 120);
+        $firstlink = explode('"', $fslr);
+        foreach ($firstlink as $ind) {
+            if (strpos($ind, 'https') !== FALSE && strpos($ind, 'questions') !== FALSE) {
+                array_push($urls, $ind);
+            }
+        }
+        $bigstring = str_replace_first('"link":', 'blank', $bigstring);
+    }
+    return $urls;
+}
+
+function str_replace_first($from, $to, $content)
+{
+    $from = '/'.preg_quote($from, '/').'/';
+
+    return preg_replace($from, $to, $content, 1);
+}
+
+function url_shortener($url, $type) {
+    $url = str_replace('https://stackoverflow.com/questions/', '', $url);
+    $url = explode('/', $url);
+    foreach ($url as $seperate) {
+        switch ($type) {
+            case 'title':
+                if (strpos($seperate, '-') !== FALSE) {
+                    $seperate = str_replace('-', ' ', $seperate);
+                    return $seperate;
+                }
+            break;
+            case 'id':
+                if (is_int($seperate) !== FALSE) {
+                    
+                } else {
+                    return $seperate;
+                }
+            break;
+        }
+    }
+
+}
+?>

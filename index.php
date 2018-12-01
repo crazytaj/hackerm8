@@ -17,8 +17,22 @@ if (!isset($_SESSION)) {
         <?php
         include 'header.php';
         ?>
+        <style>
+        .page-main {
+            background-color: #0f0f0f0f;
+            padding: 5px;
+            padding: 25px;
+            border-radius: 2px;
+            margin-bottom: 3%;
+            margin-top: 3%;
+        }
+        </style>
         <div class="container container-fluid">
-        
+        <div class="page-main">
+        <h3>Welcome to Hacker M8</h3>
+        <p>A platform developed by developers, for developers</p>
+        </div>
+        <img src="/homepage.jpg" width=100%>
         </div>
     </body>
 </html>

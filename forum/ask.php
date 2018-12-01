@@ -1,4 +1,5 @@
 <?php
+    include 'stackoverflow.php';
     if (isset($_POST['question'])) {
         header('Location: ' . '/forum?question=ask&query='. $_POST['question']);
     }
@@ -12,26 +13,20 @@
         return $chr;
 }
 ?>
-<style>
-    body {
-        background-color: lightblue;
-    }
-
-    .results {
-
-    }
-
-    .question {
-        border-radius: 7px;
-        height: 1fr;
-        width: 100%;
-        padding-left: 0.25em;
-        font-size: 4em;
-        border: 2px solid #0f0f0f0f;
-        color: grey;
-        background-color: azure;
-    }
-</style>
+    <style>
+        .question {
+            border-radius: 7px;
+            height: 1fr;
+            width: 100%;
+            padding-left: 0.25em;
+            font-size: 4em;
+            border: 2px solid #0f0f0f0f;
+            color: grey;
+        }
+        body {
+                background-color: #f9f9f9;
+        }
+    </style>
 <?php
 if (!isset($_GET['query'])) {
     ?>
@@ -85,7 +80,47 @@ if (!isset($_GET['query'])) {
                             ';
                         }
                     }
+                    $urlist = [];
+                    foreach ($searches as $ind) {
+                        $url = 'https://api.stackexchange.com/2.2/search?order=desc&sort=relevance&intitle='.$ind.'&site=stackoverflow&key=ezdKpPvARZ2jf5LcTR5zmA((';
+                        $urls = fetch_question($url);
+                        array_push($urlist, $urls);
+                        //var_dump($urls);
+                    }
+                    foreach ($urlist as $url) {
+                        //echo 'hi';
+                        foreach ($url as $ind) {
+                            $id = url_shortener($ind, 'id');
+                        $title = url_shortener($ind, 'title');
+                        echo '
+                        <div class="results">
+                            <a href="/q/stack?id='.$id.'&title='.$title.'">'.$title.'</a>
+                        </div>
+                        ';
+                        }
+                    }
+                    include 'addsearch.php';
+
                 } else {
+                    $urlist = [];
+                    foreach ($searches as $ind) {
+                        $url = 'https://api.stackexchange.com/2.2/search?order=desc&sort=relevance&intitle='.$ind.'&site=stackoverflow&key=ezdKpPvARZ2jf5LcTR5zmA((';
+                        $urls = fetch_question($url);
+                        array_push($urlist, $urls);
+                        //var_dump($urls);
+                    }
+                    foreach ($urlist as $url) {
+                        //echo 'hi';
+                        foreach ($url as $ind) {
+                            $id = url_shortener($ind, 'id');
+                        $title = url_shortener($ind, 'title');
+                        echo '
+                        <div class="results">
+                            <a href="/q/stack?id='.$id.'&title='.$title.'">'.$title.'</a>
+                        </div>
+                        ';
+                        }
+                    }
                     include 'addsearch.php';
                 }
                 
