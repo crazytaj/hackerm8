@@ -74,7 +74,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/user/dashboard">Dashboard</a>
                 <a class="dropdown-item" href="/user/profile">Profile</a>
-                <a class="dropdown-item" href="/user/settings">Settings</a>
+                <a class="dropdown-item" href="/user/paste">Create Paste</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="?logout">Logout</a>
               </ul>

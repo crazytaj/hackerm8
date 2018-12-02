@@ -29,7 +29,15 @@ if (!isset($_SESSION['user'])) {
             <h1>Hello <?php echo $userRow['username']?></h1>
         </div>
         <div class="main-content">
-            <h1>Main Page</h1>
+            <h1>My Pastes:</h1>
+            <?php
+                $sql = $conn->query("SELECT * FROM pastes WHERE user_id = '".$useid."'");
+                foreach ($sql as $ind) {
+                    $title = $ind['title'];
+                    $id = $ind['id'];
+                    echo '<a href="/user/paste?paste='.$id.'">'.$title.'</a><br>';
+                }
+            ?>
         </div>
     </div>
     </body>
