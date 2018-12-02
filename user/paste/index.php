@@ -16,21 +16,22 @@ if (!isset($_GET['paste'])) {
     $pasteid = $_GET['paste'];
     $sql = $conn->query("SELECT * FROM pastes WHERE user_id = '".$useid."' AND id = '".$pasteid."'");
     foreach($sql as $ind) {
-        $title = $ind['title'];
-        $content = $ind['content'];
+        $title = htmlentities($ind['title']);
+        $content = htmlentities($ind['content']);
     }
 }
 
 if (isset($_POST['add'])) {
-    $title = $_POST['title'];
-    $content = $_POST['content'];
+    $title = mysqli_real_escape_string($conn,$_POST['title']);
+    $content = mysqli_real_escape_string($conn,$_POST['content']);
     $sql = $conn->query("INSERT INTO pastes (title, content, user_id) VALUES ('".$title."', '".$content."', '".$useid."')") or die($conn->error);
 }
 
 if (isset($_POST['update'])) {
-    $title = $_POST['title'];
-    $content = $_POST['content'];
+    $title = mysqli_real_escape_string($conn,$_POST['title']);
+    $content = mysqli_real_escape_string($conn,$_POST['content']);
     $sql = $conn->query("UPDATE pastes SET title = '".$title."', content='".$content."' WHERE id = '".$pasteid."'") or die($conn->error);
+    echo '<meta http-equiv="refresh" content="0">';
 }
 ?>
 <!DOCTYPE html>
